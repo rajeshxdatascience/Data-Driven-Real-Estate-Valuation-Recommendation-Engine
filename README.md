@@ -1,7 +1,7 @@
 # Data-Driven Real Estate Valuation and Recommendation Engine
 
 ### Project Links
-* **Live Application:** [View Streamlit App](https://rajesh-real-estate.streamlit.app)
+* **Live Application:** [View Streamlit App](https://gurgaon-realestate-engine.streamlit.app/)
 * **Developer Profile:** [LinkedIn](https://www.linkedin.com/in/rajeshxdatascience/)
 
 ---
