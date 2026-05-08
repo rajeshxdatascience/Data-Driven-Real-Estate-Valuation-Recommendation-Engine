@@ -2,9 +2,9 @@ import streamlit as st
 import pickle
 import pandas as pd
 import numpy as np
-import time
-import sklearn # <--- Ye add karna zaruri hai
+import sys
 import sklearn.compose._column_transformer
+import time
 
 # ---------------------------------------------------
 # PAGE CONFIG
@@ -15,18 +15,13 @@ st.set_page_config(
     layout="wide"
 )
 
-# ---------------------------------------------------
-# COMPATIBILITY PATCH (For scikit-learn 1.6.1)
-# ---------------------------------------------------
-try:
-    import sklearn.compose._column_transformer
-    # Manual patch for scikit-learn compatibility
-    if not hasattr(sklearn.compose._column_transformer, '_RemainderColsList'):
-        class _RemainderColsList(list):
-            pass
-        sklearn.compose._column_transformer._RemainderColsList = _RemainderColsList
-except ImportError:
+# --- MANDATORY PATCH FOR SKLEARN 1.6.1 COMPATIBILITY ---
+class _RemainderColsList(list):
     pass
+
+sklearn.compose._column_transformer._RemainderColsList = _RemainderColsList
+sys.modules['sklearn.compose._column_transformer']._RemainderColsList = _RemainderColsList
+# -------------------------------------------------------
 
 # ---------------------------------------------------
 # STYLING & UI FIXES
