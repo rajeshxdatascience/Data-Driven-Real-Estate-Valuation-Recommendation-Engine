@@ -3,6 +3,8 @@ import pickle
 import pandas as pd
 import numpy as np
 import time
+import sklearn # <--- Ye add karna zaruri hai
+import sklearn.compose._column_transformer
 
 # ---------------------------------------------------
 # PAGE CONFIG
@@ -13,10 +15,18 @@ st.set_page_config(
     layout="wide"
 )
 
-if not hasattr(sklearn.compose._column_transformer, '_RemainderColsList'):
-    class _RemainderColsList(list):
-        pass
-    sklearn.compose._column_transformer._RemainderColsList = _RemainderColsList
+# ---------------------------------------------------
+# COMPATIBILITY PATCH (For scikit-learn 1.6.1)
+# ---------------------------------------------------
+try:
+    import sklearn.compose._column_transformer
+    # Manual patch for scikit-learn compatibility
+    if not hasattr(sklearn.compose._column_transformer, '_RemainderColsList'):
+        class _RemainderColsList(list):
+            pass
+        sklearn.compose._column_transformer._RemainderColsList = _RemainderColsList
+except ImportError:
+    pass
 
 # ---------------------------------------------------
 # STYLING & UI FIXES
