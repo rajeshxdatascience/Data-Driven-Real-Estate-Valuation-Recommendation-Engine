@@ -13,6 +13,11 @@ st.set_page_config(
     layout="wide"
 )
 
+if not hasattr(sklearn.compose._column_transformer, '_RemainderColsList'):
+    class _RemainderColsList(list):
+        pass
+    sklearn.compose._column_transformer._RemainderColsList = _RemainderColsList
+
 # ---------------------------------------------------
 # STYLING & UI FIXES
 # ---------------------------------------------------
