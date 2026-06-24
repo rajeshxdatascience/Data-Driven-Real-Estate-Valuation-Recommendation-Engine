@@ -1,7 +1,7 @@
 # Data-Driven Real Estate Valuation and Recommendation Engine
 
 ### Project Links
-* **Live Application:** [View Streamlit App](http://65.2.172.23/)
+* **Live Application:** [View Streamlit App](https://data-driven-real-estate-valuation-mzts.onrender.com/)
 * **Developer Profile:** [LinkedIn](https://www.linkedin.com/in/rajeshxdatascience/)
 
 ---
